@@ -1,7 +1,7 @@
 {
   "name": "mattiaerre.github.io",
   "version": "1.0.0",
-  "description": "mattiaerre.github.io",
+  "description": "I am not a designer",
   "main": "index.js",
   "scripts": {
     "eslint": "eslint --ext .js --ext .jsx --ignore-pattern 'public/*' .",
