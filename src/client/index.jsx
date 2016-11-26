@@ -5,10 +5,10 @@ import BinaryClock from 'react-binary-clock';
 const App = () => (
   <div className="fukol">
     <div className="fukol-grid">
-      <div>
+      <div className="binary-clock-container">
         <BinaryClock />
       </div>
-      <div>
+      <div className="textarea-container">
         <textarea rows="25"></textarea>
       </div>
     </div>

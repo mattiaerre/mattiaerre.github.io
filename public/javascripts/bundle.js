@@ -67,12 +67,12 @@
 	      { className: 'fukol-grid' },
 	      _react2.default.createElement(
 	        'div',
-	        null,
+	        { className: 'binary-clock-container' },
 	        _react2.default.createElement(_reactBinaryClock2.default, null)
 	      ),
 	      _react2.default.createElement(
 	        'div',
-	        null,
+	        { className: 'textarea-container' },
 	        _react2.default.createElement('textarea', { rows: '25' })
 	      )
 	    )
@@ -21590,17 +21590,13 @@
 
 	const digit2BCD = __webpack_require__(176);
 
-	const time2BCDs = (time) => {
-	  // todo: add guard clause against bad time format (HH:mm:ss)
-	  const bcds = [];
-	  time.split(':').forEach((part) => {
-	    part.split('').forEach((digit) => {
-	      const bcd = digit2BCD(parseInt(digit, 0));
-	      bcds.push(bcd);
-	    });
-	  });
-	  return bcds;
-	};
+	const time2BCDs = time => (
+	  [].concat(...time.split(':')
+	    .map(part => (part.split('')
+	      .map(digit => (digit2BCD(parseInt(digit, 0))))
+	    ))
+	  )
+	);
 
 	module.exports = time2BCDs;
 

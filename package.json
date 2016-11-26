@@ -37,6 +37,7 @@
     "webpack": "^1.13.2"
   },
   "dependencies": {
+    "feature-toggle": "^0.3.0",
     "react-binary-clock": "^1.0.1"
   }
 }
