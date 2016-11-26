@@ -6,7 +6,7 @@ const featuresManagement = (setFeatures) => {
     document.getElementsByClassName('binary-clock-container')[0].style.display = 'none';
   }
 
-  if (feature.active('hide-binary-clock')) {
+  if (feature.active('textbox-text-large')) {
     document.getElementsByClassName('textarea-container')[0]
     .getElementsByTagName('textarea')[0].style.fontSize = 'large';
   }
