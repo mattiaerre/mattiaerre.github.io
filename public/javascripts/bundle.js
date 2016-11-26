@@ -56,12 +56,14 @@
 
 	var _reactBinaryClock2 = _interopRequireDefault(_reactBinaryClock);
 
+	var _package = __webpack_require__(177);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var App = function App() {
 	  return _react2.default.createElement(
 	    'div',
-	    { className: 'fukol' },
+	    { className: 'fukol ' + _package.version },
 	    _react2.default.createElement(
 	      'div',
 	      { className: 'fukol-grid' },
@@ -21620,6 +21622,53 @@
 
 	module.exports = digit2BCD;
 
+
+/***/ },
+/* 177 */
+/***/ function(module, exports) {
+
+	module.exports = {
+		"name": "mattiaerre.github.io",
+		"version": "1.1.0",
+		"description": "I am not a designer",
+		"main": "index.js",
+		"scripts": {
+			"eslint": "eslint --ext .js --ext .jsx --ignore-pattern 'public/*' .",
+			"start": "http-server ./",
+			"test": "echo \"Error: no test specified\" && exit 1",
+			"webpack": "webpack"
+		},
+		"repository": {
+			"type": "git",
+			"url": "git+https://github.com/mattiaerre/mattiaerre.github.io.git"
+		},
+		"author": {
+			"name": "Mattia Richetto",
+			"email": "mattia.richetto@gmail.com"
+		},
+		"license": "MIT",
+		"bugs": {
+			"url": "https://github.com/mattiaerre/mattiaerre.github.io/issues"
+		},
+		"homepage": "https://github.com/mattiaerre/mattiaerre.github.io#readme",
+		"devDependencies": {
+			"babel-core": "^6.17.0",
+			"babel-eslint": "^7.0.0",
+			"babel-loader": "^6.2.5",
+			"babel-preset-es2015": "^6.16.0",
+			"babel-preset-react": "^6.16.0",
+			"eslint": "^3.7.1",
+			"eslint-config-opentable": "^6.0.0",
+			"eslint-plugin-react": "^6.4.0",
+			"http-server": "^0.9.0",
+			"json-loader": "^0.5.4",
+			"react": "^15.3.2",
+			"react-dom": "^15.3.2",
+			"webpack": "^1.13.2",
+			"feature-toggle": "^0.3.0",
+			"react-binary-clock": "^1.0.1"
+		}
+	};
 
 /***/ }
 /******/ ]);

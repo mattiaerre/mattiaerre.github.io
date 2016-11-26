@@ -1,9 +1,10 @@
 import React from 'react';
 import { render } from 'react-dom';
 import BinaryClock from 'react-binary-clock';
+import { version } from '../../package.json';
 
 const App = () => (
-  <div className="fukol">
+  <div className={`fukol ${version}`}>
     <div className="fukol-grid">
       <div className="binary-clock-container">
         <BinaryClock />
