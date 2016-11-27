@@ -26665,7 +26665,7 @@
 
 	var _Container2 = _interopRequireDefault(_Container);
 
-	var _Home = __webpack_require__(402);
+	var _Home = __webpack_require__(397);
 
 	var _Home2 = _interopRequireDefault(_Home);
 
@@ -50276,7 +50276,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _package = __webpack_require__(401);
+	var _package = __webpack_require__(396);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -50299,14 +50299,107 @@
 
 /***/ },
 /* 396 */
+/***/ function(module, exports) {
+
+	module.exports = {
+		"name": "mattiaerre.github.io",
+		"version": "1.2.0",
+		"description": "I am not a designer",
+		"main": "index.js",
+		"scripts": {
+			"eslint": "eslint --ext .js --ignore-pattern 'public/*' .",
+			"start": "http-server ./",
+			"test": "echo \"Error: no test specified\" && exit 1",
+			"webpack": "webpack"
+		},
+		"repository": {
+			"type": "git",
+			"url": "git+https://github.com/mattiaerre/mattiaerre.github.io.git"
+		},
+		"author": {
+			"name": "Mattia Richetto",
+			"email": "mattia.richetto@gmail.com"
+		},
+		"license": "MIT",
+		"bugs": {
+			"url": "https://github.com/mattiaerre/mattiaerre.github.io/issues"
+		},
+		"homepage": "https://github.com/mattiaerre/mattiaerre.github.io#readme",
+		"dependencies": {
+			"auth0-lock": "^10.7.1",
+			"babel-core": "^6.17.0",
+			"babel-eslint": "^7.1.1",
+			"babel-loader": "^6.2.8",
+			"babel-plugin-stylus-compiler": "^1.4.0",
+			"babel-plugin-transform-css-import-to-string": "0.0.2",
+			"babel-plugin-version-inline": "^1.0.0",
+			"babel-preset-es2015": "^6.16.0",
+			"babel-preset-react": "^6.16.0",
+			"eslint": "^3.11.0",
+			"eslint-config-opentable": "^6.0.0",
+			"eslint-plugin-react": "^6.7.1",
+			"feature-toggle": "^0.3.0",
+			"http-server": "^0.9.0",
+			"json-loader": "^0.5.4",
+			"react": "^15.4.1",
+			"react-binary-clock": "^1.0.1",
+			"react-dom": "^15.4.1",
+			"react-router": "^3.0.0",
+			"webpack": "^1.13.2"
+		}
+	};
+
+/***/ },
+/* 397 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	module.exports = __webpack_require__(397);
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactBinaryClock = __webpack_require__(398);
+
+	var _reactBinaryClock2 = _interopRequireDefault(_reactBinaryClock);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	// eslint-disable-line
+
+	var Home = function Home() {
+	  // eslint-disable-line
+	  return _react2.default.createElement(
+	    'div',
+	    { className: 'fukol-grid' },
+	    _react2.default.createElement(
+	      'div',
+	      { className: 'binary-clock-container' },
+	      _react2.default.createElement(_reactBinaryClock2.default, null)
+	    ),
+	    _react2.default.createElement(
+	      'div',
+	      { className: 'textarea-container' },
+	      _react2.default.createElement('textarea', { rows: '25' })
+	    )
+	  );
+	}; // eslint-disable-line
+	exports.default = Home;
 
 /***/ },
-/* 397 */
+/* 398 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	module.exports = __webpack_require__(399);
+
+/***/ },
+/* 399 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -50321,7 +50414,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _View = __webpack_require__(398);
+	var _View = __webpack_require__(400);
 
 	var _View2 = _interopRequireDefault(_View);
 
@@ -50383,7 +50476,7 @@
 	exports.default = ViewModel;
 
 /***/ },
-/* 398 */
+/* 400 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -50396,7 +50489,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _time2Bcds = __webpack_require__(399);
+	var _time2Bcds = __webpack_require__(401);
 
 	var _time2Bcds2 = _interopRequireDefault(_time2Bcds);
 
@@ -50435,14 +50528,14 @@
 	exports.default = BinaryClock;
 
 /***/ },
-/* 399 */
+/* 401 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
-	var digit2BCD = __webpack_require__(400);
+	var digit2BCD = __webpack_require__(402);
 
 	var time2BCDs = function time2BCDs(time) {
 	  var _ref;
@@ -50457,7 +50550,7 @@
 	module.exports = time2BCDs;
 
 /***/ },
-/* 400 */
+/* 402 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -50494,99 +50587,6 @@
 	};
 
 	module.exports = digit2BCD;
-
-/***/ },
-/* 401 */
-/***/ function(module, exports) {
-
-	module.exports = {
-		"name": "mattiaerre.github.io",
-		"version": "1.1.1",
-		"description": "I am not a designer",
-		"main": "index.js",
-		"scripts": {
-			"eslint": "eslint --ext .js --ignore-pattern 'public/*' .",
-			"start": "http-server ./",
-			"test": "echo \"Error: no test specified\" && exit 1",
-			"webpack": "webpack"
-		},
-		"repository": {
-			"type": "git",
-			"url": "git+https://github.com/mattiaerre/mattiaerre.github.io.git"
-		},
-		"author": {
-			"name": "Mattia Richetto",
-			"email": "mattia.richetto@gmail.com"
-		},
-		"license": "MIT",
-		"bugs": {
-			"url": "https://github.com/mattiaerre/mattiaerre.github.io/issues"
-		},
-		"homepage": "https://github.com/mattiaerre/mattiaerre.github.io#readme",
-		"dependencies": {
-			"auth0-lock": "^10.7.1",
-			"babel-core": "^6.17.0",
-			"babel-eslint": "^7.1.1",
-			"babel-loader": "^6.2.8",
-			"babel-plugin-stylus-compiler": "^1.4.0",
-			"babel-plugin-transform-css-import-to-string": "0.0.2",
-			"babel-plugin-version-inline": "^1.0.0",
-			"babel-preset-es2015": "^6.16.0",
-			"babel-preset-react": "^6.16.0",
-			"eslint": "^3.11.0",
-			"eslint-config-opentable": "^6.0.0",
-			"eslint-plugin-react": "^6.7.1",
-			"feature-toggle": "^0.3.0",
-			"http-server": "^0.9.0",
-			"json-loader": "^0.5.4",
-			"react": "^15.4.1",
-			"react-binary-clock": "^1.0.1",
-			"react-dom": "^15.4.1",
-			"react-router": "^3.0.0",
-			"webpack": "^1.13.2"
-		}
-	};
-
-/***/ },
-/* 402 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactBinaryClock = __webpack_require__(396);
-
-	var _reactBinaryClock2 = _interopRequireDefault(_reactBinaryClock);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	// eslint-disable-line
-
-	var Home = function Home() {
-	  // eslint-disable-line
-	  return _react2.default.createElement(
-	    'div',
-	    { className: 'fukol-grid' },
-	    _react2.default.createElement(
-	      'div',
-	      { className: 'binary-clock-container' },
-	      _react2.default.createElement(_reactBinaryClock2.default, null)
-	    ),
-	    _react2.default.createElement(
-	      'div',
-	      { className: 'textarea-container' },
-	      _react2.default.createElement('textarea', { rows: '25' })
-	    )
-	  );
-	}; // eslint-disable-line
-	exports.default = Home;
 
 /***/ },
 /* 403 */
