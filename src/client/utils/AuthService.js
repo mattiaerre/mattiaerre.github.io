@@ -1,59 +1,58 @@
-// src/utils/AuthService.js
-
 import Auth0Lock from 'auth0-lock';
 import { browserHistory } from 'react-router';
 
+const ID_TOKEN = 'id_token';
+const ACCESS_TOKEN = 'access_token';
+
+// I do not like this design !?!
+
 export default class AuthService {
   constructor(clientId, domain) {
-    // Configure Auth0
     this.lock = new Auth0Lock(clientId, domain, {
       auth: {
         redirectUrl: `${window.location.origin}/`,
         responseType: 'token'
       }
     });
-    // Add callback for lock `authenticated` event
     this.lock.on('authenticated', this.doAuthentication.bind(this));
-    // binds login functions to keep this context
-    // Add callback for lock `authorization_error` event
     this.lock.on('authorization_error', this.authorizationError.bind(this));
     this.login = this.login.bind(this);
   }
 
   doAuthentication(authResult) {
-    // Saves the user token
-    this.setToken(authResult.idToken);
-    // navigate to the home route
+    this.setToken(authResult.idToken, authResult.accessToken);
     browserHistory.replace('/');
   }
 
   authorizationError(error) { // eslint-disable-line
-    // Unexpected authentication error
-    console.log('authorization_error', error);
+    console.log('authorization_error', error); // eslint-disable-line
   }
 
-  login() {
-    // Call the show method to display the widget.
-    this.lock.show();
-  }
+  login() { this.lock.show(); }
 
-  loggedIn() {
-    // Checks if there is a saved token and it's still valid
-    return !!this.getToken();
-  }
+  loggedIn() { return !!this.getToken().idToken; }
 
-  setToken(idToken) { // eslint-disable-line
-    // Saves user token to local storage
-    localStorage.setItem('id_token', idToken);
+  setToken(idToken, accessToken) { // eslint-disable-line
+    localStorage.setItem(ID_TOKEN, idToken);
+    localStorage.setItem(ACCESS_TOKEN, accessToken);
   }
 
   getToken() { // eslint-disable-line
-    // Retrieves the user token from local storage
-    return localStorage.getItem('id_token');
+    const data = {
+      idToken: localStorage.getItem(ID_TOKEN),
+      accessToken: localStorage.getItem(ACCESS_TOKEN)
+    };
+    return data;
   }
 
   logout() { // eslint-disable-line
-    // Clear user token and profile data from local storage
-    localStorage.removeItem('id_token');
+    localStorage.removeItem(ID_TOKEN);
+    localStorage.removeItem(ACCESS_TOKEN);
+  }
+
+  getUserInfo(callback) {
+    this.lock.getUserInfo(this.getToken().accessToken, (error, profile) => {
+      callback(error, profile);
+    });
   }
 }

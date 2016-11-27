@@ -9,17 +9,15 @@ const auth = new AuthService('YxmJEseG6u9Bl8ONjGkTicUPrryqDVY1', 'mattiaerre.aut
 
 // see: https://auth0.com/forum/t/having-trouble-with-login-following-the-react-guide/3084/7
 const requireAuth = (nextState, replace) => {
-  console.log('logged in', auth.loggedIn());
   if (nextState.location.hash) {
     const hashString = nextState.location.hash;
     const idString = '&id_token';
     const firstIndex = hashString.indexOf(idString) + idString.length + 1;
     const lastIndex = hashString.indexOf('&token_type=');
-    console.log(hashString.substring(firstIndex, lastIndex));
-    localStorage.setItem('id_token', hashString.substring(firstIndex, lastIndex));
+    const idToken = hashString.substring(firstIndex, lastIndex);
+    localStorage.setItem('id_token', idToken);
   }
   if (!auth.loggedIn()) {
-    console.log(nextState, 'nextState', replace, 'replace');
     replace({ pathname: '/login' });
     return false;
   }
@@ -28,7 +26,7 @@ const requireAuth = (nextState, replace) => {
 
 export default (
   <Route path="/" component={Container} auth={auth}>
-    <IndexRoute component={Home} onEnter={requireAuth} />
-    <Route path="/login" auth={auth} component={Login} />
+    <IndexRoute component={Home} auth={auth} onEnter={requireAuth} />
+    <Route path="/login" component={Login} auth={auth} />
   </Route>
 );

@@ -26881,17 +26881,15 @@
 	// eslint-disable-line
 	// eslint-disable-line
 	var requireAuth = function requireAuth(nextState, replace) {
-	  console.log('logged in', auth.loggedIn());
 	  if (nextState.location.hash) {
 	    var hashString = nextState.location.hash;
 	    var idString = '&id_token';
 	    var firstIndex = hashString.indexOf(idString) + idString.length + 1;
 	    var lastIndex = hashString.indexOf('&token_type=');
-	    console.log(hashString.substring(firstIndex, lastIndex));
-	    localStorage.setItem('id_token', hashString.substring(firstIndex, lastIndex));
+	    var idToken = hashString.substring(firstIndex, lastIndex);
+	    localStorage.setItem('id_token', idToken);
 	  }
 	  if (!auth.loggedIn()) {
-	    console.log(nextState, 'nextState', replace, 'replace');
 	    replace({ pathname: '/login' });
 	    return false;
 	  }
@@ -26901,8 +26899,8 @@
 	exports.default = _react2.default.createElement(
 	  _reactRouter.Route,
 	  { path: '/', component: _Container2.default, auth: auth },
-	  _react2.default.createElement(_reactRouter.IndexRoute, { component: _Home2.default, onEnter: requireAuth }),
-	  _react2.default.createElement(_reactRouter.Route, { path: '/login', auth: auth, component: _Login2.default })
+	  _react2.default.createElement(_reactRouter.IndexRoute, { component: _Home2.default, auth: auth, onEnter: requireAuth }),
+	  _react2.default.createElement(_reactRouter.Route, { path: '/login', component: _Login2.default, auth: auth })
 	);
 
 /***/ },
@@ -26915,7 +26913,7 @@
 	  value: true
 	});
 
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); // src/utils/AuthService.js
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 	var _auth0Lock = __webpack_require__(239);
 
@@ -26927,21 +26925,22 @@
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+	var ID_TOKEN = 'id_token';
+	var ACCESS_TOKEN = 'access_token';
+
+	// I do not like this design !?!
+
 	var AuthService = function () {
 	  function AuthService(clientId, domain) {
 	    _classCallCheck(this, AuthService);
 
-	    // Configure Auth0
 	    this.lock = new _auth0Lock2.default(clientId, domain, {
 	      auth: {
 	        redirectUrl: window.location.origin + '/',
 	        responseType: 'token'
 	      }
 	    });
-	    // Add callback for lock `authenticated` event
 	    this.lock.on('authenticated', this.doAuthentication.bind(this));
-	    // binds login functions to keep this context
-	    // Add callback for lock `authorization_error` event
 	    this.lock.on('authorization_error', this.authorizationError.bind(this));
 	    this.login = this.login.bind(this);
 	  }
@@ -26949,50 +26948,55 @@
 	  _createClass(AuthService, [{
 	    key: 'doAuthentication',
 	    value: function doAuthentication(authResult) {
-	      // Saves the user token
-	      this.setToken(authResult.idToken);
-	      // navigate to the home route
+	      this.setToken(authResult.idToken, authResult.accessToken);
 	      _reactRouter.browserHistory.replace('/');
 	    }
 	  }, {
 	    key: 'authorizationError',
 	    value: function authorizationError(error) {
 	      // eslint-disable-line
-	      // Unexpected authentication error
-	      console.log('authorization_error', error);
+	      console.log('authorization_error', error); // eslint-disable-line
 	    }
 	  }, {
 	    key: 'login',
 	    value: function login() {
-	      // Call the show method to display the widget.
 	      this.lock.show();
 	    }
 	  }, {
 	    key: 'loggedIn',
 	    value: function loggedIn() {
-	      // Checks if there is a saved token and it's still valid
-	      return !!this.getToken();
+	      return !!this.getToken().idToken;
 	    }
 	  }, {
 	    key: 'setToken',
-	    value: function setToken(idToken) {
+	    value: function setToken(idToken, accessToken) {
 	      // eslint-disable-line
-	      // Saves user token to local storage
-	      localStorage.setItem('id_token', idToken);
+	      localStorage.setItem(ID_TOKEN, idToken);
+	      localStorage.setItem(ACCESS_TOKEN, accessToken);
 	    }
 	  }, {
 	    key: 'getToken',
 	    value: function getToken() {
 	      // eslint-disable-line
-	      // Retrieves the user token from local storage
-	      return localStorage.getItem('id_token');
+	      var data = {
+	        idToken: localStorage.getItem(ID_TOKEN),
+	        accessToken: localStorage.getItem(ACCESS_TOKEN)
+	      };
+	      return data;
 	    }
 	  }, {
 	    key: 'logout',
 	    value: function logout() {
 	      // eslint-disable-line
-	      // Clear user token and profile data from local storage
-	      localStorage.removeItem('id_token');
+	      localStorage.removeItem(ID_TOKEN);
+	      localStorage.removeItem(ACCESS_TOKEN);
+	    }
+	  }, {
+	    key: 'getUserInfo',
+	    value: function getUserInfo(callback) {
+	      this.lock.getUserInfo(this.getToken().accessToken, function (error, profile) {
+	        callback(error, profile);
+	      });
 	    }
 	  }]);
 
@@ -50628,6 +50632,8 @@
 	  value: true
 	});
 
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 	var _react = __webpack_require__(1);
 
 	var _react2 = _interopRequireDefault(_react);
@@ -50638,25 +50644,74 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } // eslint-disable-line
+
+
 	// eslint-disable-line
 
-	var Home = function Home() {
-	  // eslint-disable-line
-	  return _react2.default.createElement(
-	    'div',
-	    { className: 'fukol-grid' },
-	    _react2.default.createElement(
-	      'div',
-	      { className: 'binary-clock-container' },
-	      _react2.default.createElement(_reactBinaryClock2.default, null)
-	    ),
-	    _react2.default.createElement(
-	      'div',
-	      { className: 'textarea-container' },
-	      _react2.default.createElement('textarea', { rows: '25' })
-	    )
-	  );
-	}; // eslint-disable-line
+	var Home = function (_React$Component) {
+	  _inherits(Home, _React$Component);
+
+	  function Home(props) {
+	    _classCallCheck(this, Home);
+
+	    var _this = _possibleConstructorReturn(this, (Home.__proto__ || Object.getPrototypeOf(Home)).call(this, props));
+
+	    var auth = props.route.auth;
+
+	    _this.state = {
+	      auth: auth,
+	      nickname: 'John Doe'
+	    };
+	    return _this;
+	  }
+
+	  _createClass(Home, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      var _this2 = this;
+
+	      this.state.auth.getUserInfo(function (error, profile) {
+	        if (error) {
+	          console.log('error:', error); // eslint-disable-line
+	        } else {
+	          _this2.setState({ nickname: profile.nickname });
+	        }
+	      });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      // eslint-disable-line
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'fukol-grid' },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'binary-clock-container' },
+	          _react2.default.createElement(_reactBinaryClock2.default, null),
+	          _react2.default.createElement(
+	            'span',
+	            null,
+	            'Hi ' + this.state.nickname + ', is that you?'
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'textarea-container' },
+	          _react2.default.createElement('textarea', { rows: '25' })
+	        )
+	      );
+	    }
+	  }]);
+
+	  return Home;
+	}(_react2.default.Component);
+
 	exports.default = Home;
 
 /***/ },
@@ -50866,9 +50921,6 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.Login = undefined;
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 	var _react = __webpack_require__(1);
 
@@ -50876,44 +50928,25 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	// eslint-disable-line
 
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	var Login = function Login(props) {
+	  var auth = props.route.auth;
 
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var Login = exports.Login = function (_React$Component) {
-	  _inherits(Login, _React$Component);
-
-	  function Login() {
-	    _classCallCheck(this, Login);
-
-	    return _possibleConstructorReturn(this, (Login.__proto__ || Object.getPrototypeOf(Login)).apply(this, arguments));
-	  }
-
-	  _createClass(Login, [{
-	    key: "render",
-	    value: function render() {
-	      var auth = this.props.route.auth;
-
-	      return _react2.default.createElement(
-	        "div",
-	        { className: "fukol-grid" },
-	        _react2.default.createElement(
-	          "h4",
-	          null,
-	          _react2.default.createElement(
-	            "a",
-	            { href: "#", onClick: auth.login.bind(this) },
-	            "Login"
-	          )
-	        )
-	      );
-	    }
-	  }]);
-
-	  return Login;
-	}(_react2.default.Component);
+	  return _react2.default.createElement(
+	    "div",
+	    { className: "fukol-grid" },
+	    _react2.default.createElement(
+	      "h4",
+	      null,
+	      _react2.default.createElement(
+	        "a",
+	        { href: "#", onClick: auth.login },
+	        "Login"
+	      )
+	    )
+	  );
+	};
 
 	exports.default = Login;
 
