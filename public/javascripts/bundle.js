@@ -50571,7 +50571,7 @@
 	module.exports = {
 		"name": "mattiaerre.github.io",
 		"version": "1.3.0",
-		"description": "I am not a designer",
+		"description": "Am I not a designer?",
 		"main": "index.js",
 		"scripts": {
 			"eslint": "eslint --ext .js --ignore-pattern 'public/*' .",
