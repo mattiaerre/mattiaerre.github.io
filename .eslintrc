@@ -1,0 +1,10 @@
+{
+  "env": {
+    "browser": true
+  },
+  "parser": "babel-eslint",
+  "plugins": [
+    "react"
+  ],
+  "extends": "opentable"
+}
