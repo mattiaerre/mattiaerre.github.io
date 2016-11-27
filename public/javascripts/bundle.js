@@ -50570,7 +50570,7 @@
 
 	module.exports = {
 		"name": "mattiaerre.github.io",
-		"version": "1.2.0",
+		"version": "1.3.0",
 		"description": "I am not a designer",
 		"main": "index.js",
 		"scripts": {
