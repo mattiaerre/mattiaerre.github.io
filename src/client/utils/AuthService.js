@@ -1,3 +1,5 @@
+// src/utils/AuthService.js
+
 import Auth0Lock from 'auth0-lock';
 import { browserHistory } from 'react-router';
 
@@ -6,21 +8,28 @@ export default class AuthService {
     // Configure Auth0
     this.lock = new Auth0Lock(clientId, domain, {
       auth: {
-        redirectUrl: 'http://localhost:8080/login',
+        redirectUrl: `${window.location.origin}/`,
         responseType: 'token'
       }
     });
     // Add callback for lock `authenticated` event
     this.lock.on('authenticated', this.doAuthentication.bind(this));
     // binds login functions to keep this context
+    // Add callback for lock `authorization_error` event
+    this.lock.on('authorization_error', this.authorizationError.bind(this));
     this.login = this.login.bind(this);
   }
 
   doAuthentication(authResult) {
     // Saves the user token
     this.setToken(authResult.idToken);
-    // Navigate to the home route
-    browserHistory.replace('/home');
+    // navigate to the home route
+    browserHistory.replace('/');
+  }
+
+  authorizationError(error) { // eslint-disable-line
+    // Unexpected authentication error
+    console.log('authorization_error', error);
   }
 
   login() {

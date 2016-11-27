@@ -1,13 +1,14 @@
-import React from 'react'; // eslint-disable-line
+import React from 'react';
 
-const Login = () => { // eslint-disable-line
-  return (
-    <div className="fukol-grid">
-      <div>
-        LOGIN
+export class Login extends React.Component {
+  render() {
+    const { auth } = this.props.route;
+    return (
+      <div className="fukol-grid">
+        <h4><a href="#" onClick={auth.login.bind(this)}>Login</a></h4>
       </div>
-    </div>
-  );
-};
+    );
+  }
+}
 
 export default Login;
