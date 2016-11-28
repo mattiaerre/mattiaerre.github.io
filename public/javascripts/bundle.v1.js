@@ -50577,7 +50577,7 @@
 
 	module.exports = {
 		"name": "mattiaerre.github.io",
-		"version": "1.3.1",
+		"version": "1.4.0",
 		"description": "Am I not a designer?",
 		"main": "index.js",
 		"scripts": {
