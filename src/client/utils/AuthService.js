@@ -32,6 +32,7 @@ export default class AuthService {
 
   loggedIn() { return !!this.getToken().idToken; }
 
+  // info: this should be set tokens !?!
   setToken(idToken, accessToken) { // eslint-disable-line
     localStorage.setItem(ID_TOKEN, idToken);
     localStorage.setItem(ACCESS_TOKEN, accessToken);

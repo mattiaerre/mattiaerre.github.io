@@ -26967,6 +26967,9 @@
 	    value: function loggedIn() {
 	      return !!this.getToken().idToken;
 	    }
+
+	    // info: this should be set tokens !?!
+
 	  }, {
 	    key: 'setToken',
 	    value: function setToken(idToken, accessToken) {

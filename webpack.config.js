@@ -1,9 +1,12 @@
 const path = require('path');
 
 module.exports = {
-  entry: './src/client/index.js',
+  entry: {
+    v1: './src/client/index.js',
+    v2: './src/client-v2/index.js'
+  },
   output: {
-    filename: 'bundle.js',
+    filename: 'bundle.[name].js',
     path: path.resolve(__dirname, 'public/javascripts')
   },
   module: {
