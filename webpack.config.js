@@ -13,7 +13,8 @@ module.exports = {
     loaders: [
       { test: /\.js$/, loaders: ['babel'] },
       { test: /\.jsx$/, loaders: ['babel'] },
-      { test: /\.json$/, loader: 'json' }
+      { test: /\.json$/, loader: 'json' },
+      { test: /\.css$/, loaders: ['style-loader', 'css-loader'] }
     ]
   }
 };
