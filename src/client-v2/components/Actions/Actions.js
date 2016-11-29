@@ -1,6 +1,6 @@
 import React from 'react'; // eslint-disable-line
 import * as eventNames from '../../constants/event-names';
-import './Actions.css';
+import '../Common/Common.css';
 
 class Actions extends React.Component {
   constructor(props) {

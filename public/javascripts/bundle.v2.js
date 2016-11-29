@@ -21727,14 +21727,6 @@
 
 	var _package = __webpack_require__(184);
 
-	var _Actions = __webpack_require__(185);
-
-	var _Actions2 = _interopRequireDefault(_Actions);
-
-	var _Welcome = __webpack_require__(187);
-
-	var _Welcome2 = _interopRequireDefault(_Welcome);
-
 	var _lockFactory = __webpack_require__(188);
 
 	var _lockFactory2 = _interopRequireDefault(_lockFactory);
@@ -21743,13 +21735,27 @@
 
 	var _actionsFactory2 = _interopRequireDefault(_actionsFactory);
 
+	var _Welcome = __webpack_require__(187);
+
+	var _Welcome2 = _interopRequireDefault(_Welcome);
+
+	var _Actions = __webpack_require__(185);
+
+	var _Actions2 = _interopRequireDefault(_Actions);
+
+	var _Body = __webpack_require__(355);
+
+	var _Body2 = _interopRequireDefault(_Body);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	// eslint-disable-line
+
 	// eslint-disable-line
 	var eventEmitter = new _wolfy87Eventemitter2.default();
 
 	// info: not sure if it is correct to bootstrap the actions here
+	// eslint-disable-line
 	// eslint-disable-line
 	var lock = (0, _lockFactory2.default)('YxmJEseG6u9Bl8ONjGkTicUPrryqDVY1', 'mattiaerre.auth0.com', eventEmitter);
 	var actions = (0, _actionsFactory2.default)(lock);
@@ -21759,7 +21765,8 @@
 	    'div',
 	    { className: 'fukol ' + _package.version },
 	    _react2.default.createElement(_Welcome2.default, { nickname: 'John Doe', eventEmitter: eventEmitter }),
-	    _react2.default.createElement(_Actions2.default, { actions: actions, eventEmitter: eventEmitter })
+	    _react2.default.createElement(_Actions2.default, { actions: actions, eventEmitter: eventEmitter }),
+	    _react2.default.createElement(_Body2.default, { eventEmitter: eventEmitter })
 	  );
 	};
 
@@ -22336,7 +22343,7 @@
 
 	var eventNames = _interopRequireWildcard(_eventNames);
 
-	__webpack_require__(351);
+	__webpack_require__(361);
 
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -46154,46 +46161,8 @@
 	exports.default = actionsFactory;
 
 /***/ },
-/* 351 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-
-	// load the styles
-	var content = __webpack_require__(352);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(354)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./Actions.css", function() {
-				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./Actions.css");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 352 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(353)();
-	// imports
-
-
-	// module
-	exports.push([module.id, ".hide {\n  display: none;\n}\n", ""]);
-
-	// exports
-
-
-/***/ },
+/* 351 */,
+/* 352 */,
 /* 353 */
 /***/ function(module, exports) {
 
@@ -46498,6 +46467,334 @@
 		if(oldSrc)
 			URL.revokeObjectURL(oldSrc);
 	}
+
+
+/***/ },
+/* 355 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactBinaryClock = __webpack_require__(356);
+
+	var _reactBinaryClock2 = _interopRequireDefault(_reactBinaryClock);
+
+	var _eventNames = __webpack_require__(186);
+
+	var eventNames = _interopRequireWildcard(_eventNames);
+
+	__webpack_require__(361);
+
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } // eslint-disable-line
+	// eslint-disable-line
+
+
+	var Body = function (_React$Component) {
+	  _inherits(Body, _React$Component);
+
+	  function Body(props) {
+	    _classCallCheck(this, Body);
+
+	    var _this = _possibleConstructorReturn(this, (Body.__proto__ || Object.getPrototypeOf(Body)).call(this, props));
+
+	    var eventEmitter = props.eventEmitter;
+
+	    _this.eventEmitter = eventEmitter;
+
+	    _this.state = {
+	      userIsLoggedIn: false
+	    };
+	    return _this;
+	  }
+
+	  _createClass(Body, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      var _this2 = this;
+
+	      this.eventEmitter.on(eventNames.PROFILE_SENT, function (profile) {
+	        _this2.setState({ userIsLoggedIn: profile.userIsLoggedIn });
+	      });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'fukol-grid ' + (this.state.userIsLoggedIn ? '' : 'hide') },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'binary-clock-container' },
+	          _react2.default.createElement(_reactBinaryClock2.default, null)
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'textarea-container' },
+	          _react2.default.createElement('textarea', { rows: '25' })
+	        )
+	      );
+	    }
+	  }]);
+
+	  return Body;
+	}(_react2.default.Component);
+
+	exports.default = Body;
+
+/***/ },
+/* 356 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	module.exports = __webpack_require__(357);
+
+/***/ },
+/* 357 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _View = __webpack_require__(358);
+
+	var _View2 = _interopRequireDefault(_View);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var pad = function pad(number) {
+	  return ('00' + number).slice(-2);
+	};
+
+	var makeTime = function makeTime() {
+	  var date = new Date();
+	  return pad(date.getHours()) + ':' + pad(date.getMinutes()) + ':' + pad(date.getSeconds());
+	};
+
+	var ViewModel = function (_React$Component) {
+	  _inherits(ViewModel, _React$Component);
+
+	  function ViewModel(props) {
+	    _classCallCheck(this, ViewModel);
+
+	    var _this = _possibleConstructorReturn(this, (ViewModel.__proto__ || Object.getPrototypeOf(ViewModel)).call(this, props));
+
+	    _this.state = { time: makeTime() };
+	    return _this;
+	  }
+
+	  _createClass(ViewModel, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      var intervalId = setInterval(this.timer.bind(this), 1000);
+	      this.setState({ intervalId: intervalId });
+	    }
+	  }, {
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount() {
+	      clearInterval(this.state.intervalId);
+	    }
+	  }, {
+	    key: 'timer',
+	    value: function timer() {
+	      this.setState({ time: makeTime() });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(_View2.default, { time: this.state.time });
+	    }
+	  }]);
+
+	  return ViewModel;
+	}(_react2.default.Component);
+
+	exports.default = ViewModel;
+
+/***/ },
+/* 358 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _time2Bcds = __webpack_require__(359);
+
+	var _time2Bcds2 = _interopRequireDefault(_time2Bcds);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var BinaryClock = function BinaryClock(_ref) {
+	  var time = _ref.time;
+
+	  var bcds = (0, _time2Bcds2.default)(time);
+
+	  var rows = [];
+	  bcds.forEach(function (bcd, i) {
+	    var row = [];
+	    bcd.forEach(function (bit, j) {
+	      var ledClassName = 'led ' + (bit === 0 ? 'off' : 'on');
+	      row.push(_react2.default.createElement('div', { className: ledClassName, key: j }));
+	    });
+	    rows.push(_react2.default.createElement(
+	      'div',
+	      { className: 'row', key: i },
+	      row
+	    ));
+	  });
+
+	  return _react2.default.createElement(
+	    'div',
+	    { className: 'binary-clock' },
+	    rows
+	  );
+	};
+
+	BinaryClock.propTypes = {
+	  time: _react.PropTypes.string
+	};
+
+	exports.default = BinaryClock;
+
+/***/ },
+/* 359 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+	var digit2BCD = __webpack_require__(360);
+
+	var time2BCDs = function time2BCDs(time) {
+	  var _ref;
+
+	  return (_ref = []).concat.apply(_ref, _toConsumableArray(time.split(':').map(function (part) {
+	    return part.split('').map(function (digit) {
+	      return digit2BCD(parseInt(digit, 0));
+	    });
+	  })));
+	};
+
+	module.exports = time2BCDs;
+
+/***/ },
+/* 360 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	var digit2BCD = function digit2BCD(digit) {
+	  if (digit === 1) {
+	    return [0, 0, 0, 1];
+	  }
+	  if (digit === 2) {
+	    return [0, 0, 1, 0];
+	  }
+	  if (digit === 3) {
+	    return [0, 0, 1, 1];
+	  }
+	  if (digit === 4) {
+	    return [0, 1, 0, 0];
+	  }
+	  if (digit === 5) {
+	    return [0, 1, 0, 1];
+	  }
+	  if (digit === 6) {
+	    return [0, 1, 1, 0];
+	  }
+	  if (digit === 7) {
+	    return [0, 1, 1, 1];
+	  }
+	  if (digit === 8) {
+	    return [1, 0, 0, 0];
+	  }
+	  if (digit === 9) {
+	    return [1, 0, 0, 1];
+	  }
+	  return [0, 0, 0, 0];
+	};
+
+	module.exports = digit2BCD;
+
+/***/ },
+/* 361 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(362);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(354)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./Common.css", function() {
+				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./Common.css");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 362 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(353)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".hide {\n  display: none;\n}\n", ""]);
+
+	// exports
 
 
 /***/ }
