@@ -22266,7 +22266,7 @@
 
 	module.exports = {
 		"name": "mattiaerre.github.io",
-		"version": "1.4.1",
+		"version": "1.5.0",
 		"description": "Am I not a designer?",
 		"main": "index.js",
 		"scripts": {
