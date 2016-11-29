@@ -10,14 +10,6 @@ const featuresManagement = (setFeatures) => {
     document.getElementsByClassName('textarea-container')[0]
     .getElementsByTagName('textarea')[0].style.fontSize = 'large';
   }
-
-  if (feature.active('v2')) {
-    const script = document.createElement('script');
-    script.src = 'public/javascripts/bundle.v2.js';
-    script.innerHTML = null;
-    document.getElementById('react-bundle-container').innerHTML = null;
-    document.getElementById('react-bundle-container').appendChild(script);
-  }
 };
 
 const loadCurrentYear = (pegasus) => {

@@ -16,7 +16,7 @@ class Actions extends React.Component {
 
   componentDidMount() {
     this.eventEmitter.on(eventNames.PROFILE_SENT, (profile) => {
-      this.setState({ nickname: profile.nickname, userIsLoggedIn: profile.userIsLoggedIn });
+      this.setState({ userIsLoggedIn: profile.userIsLoggedIn });
     });
   }
 
