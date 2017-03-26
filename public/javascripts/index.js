@@ -27,7 +27,8 @@ const loadCurrentYear = (pegasus) => {
     });
 };
 
-((setFeatures, pegasus) => {
+((setFeatures, pegasus, oc) => {
   featuresManagement(setFeatures);
   loadCurrentYear(pegasus);
-})(window.setFeatures, window.pegasus);
+  oc.renderUnloadedComponents();
+})(window.setFeatures, window.pegasus, window.oc);
