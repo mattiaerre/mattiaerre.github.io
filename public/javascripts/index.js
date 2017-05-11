@@ -13,11 +13,11 @@ const featuresManagement = (setFeatures) => {
 };
 
 const loadCurrentYear = (pegasus) => {
-  // https://sad-balcony.herokuapp.com/converter/arabic2roman/2016
+  // https://sad-balcony.herokuapp.com/converter/arabic2roman/2017
   // ```bash
   // wt edit
   // ```
-  const request = pegasus('https://wt-mattia-richetto-gmail-com-0.run.webtask.io/arabic2roman?webtask_no_cache=1&arabic=2016');
+  const request = pegasus('https://wt-mattia-richetto-gmail-com-0.run.webtask.io/arabic2roman?webtask_no_cache=1&arabic=2017');
   request.then(
     (data, xhr) => {
       document.getElementById('current-year').innerHTML = data.roman;
