@@ -1,6 +1,6 @@
 # mattiaerre.github.io
 
-_Am I not a designer?_
+_Agile developer at OpenTable, marathon runner, and yoga enthusiast living in San Francisco._
 
 ## Currently using ...
 

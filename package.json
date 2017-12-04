@@ -1,7 +1,7 @@
 {
   "name": "mattiaerre.github.io",
   "version": "1.7.2",
-  "description": "Am I not a designer?",
+  "description": "Agile developer at OpenTable, marathon runner, and yoga enthusiast living in San Francisco.",
   "main": "index.js",
   "scripts": {
     "eslint": "eslint --ext .js --ignore-pattern 'public/*' .",
@@ -44,7 +44,7 @@
     "eslint-plugin-react": "^6.7.1",
     "feature-toggle": "^0.3.0",
     "http-server": "^0.9.0",
-    "jest": "^17.0.3",
+    "jest-cli": "^21.2.1",
     "json-loader": "^0.5.4",
     "react": "^15.4.1",
     "react-addons-test-utils": "^15.4.1",
