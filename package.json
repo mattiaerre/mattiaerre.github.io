@@ -1,7 +1,7 @@
 {
   "name": "mattiaerre.github.io",
   "version": "1.7.3",
-  "description": "Agile developer at OpenTable, marathon runner, and yoga enthusiast #remoteyear.",
+  "description": "Agile developer at OpenTable, marathon runner, and yoga enthusiast.",
   "main": "index.js",
   "scripts": {
     "eslint": "eslint --ext .js --ignore-pattern 'public/*' .",
