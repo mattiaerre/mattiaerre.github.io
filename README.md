@@ -1,6 +1,6 @@
 # mattiaerre.github.io
 
-Agile developer at OpenTable, marathon runner, and yoga enthusiast.
+Product Engineer at OpenTable, runner, and yoga enthusiast.
 
 ## Currently using ...
 
