@@ -5,7 +5,11 @@ mattiaerre.github.io
 ## How to
 
 ```bash
+yarn start
 
+yarn test
+
+yarn deploy
 ```
 
 ## Resources

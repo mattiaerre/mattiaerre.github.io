@@ -8,6 +8,18 @@ exports[`to match snapshot 1`] = `
     <h1>
       mattiaerre.github.io
     </h1>
+    <p>
+      Product Engineering at OpenTable
+    </p>
+    <p>
+      <textarea
+        cols="50"
+        rows="25"
+      />
+    </p>
+    <footer>
+      2.0.1
+    </footer>
   </main>
 </div>
 `;
