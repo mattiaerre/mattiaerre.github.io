@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`to match snapshot 1`] = `
+<div>
+  <main
+    class="App"
+  >
+    <h1>
+      mattiaerre.github.io
+    </h1>
+  </main>
+</div>
+`;
