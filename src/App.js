@@ -7,7 +7,7 @@ function App() {
       <h1>mattiaerre.github.io</h1>
       <p>Product Engineering at OpenTable</p>
       <p>
-        <textarea cols="100" rows="25"></textarea>
+        <textarea cols="85" rows="20"></textarea>
       </p>
       <footer>{version}</footer>
     </main>
