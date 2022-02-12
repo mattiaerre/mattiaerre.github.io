@@ -13,12 +13,12 @@ exports[`to match snapshot 1`] = `
     </p>
     <p>
       <textarea
-        cols="100"
-        rows="25"
+        cols="85"
+        rows="20"
       />
     </p>
     <footer>
-      2.2.0
+      2.3.0
     </footer>
   </main>
 </div>
