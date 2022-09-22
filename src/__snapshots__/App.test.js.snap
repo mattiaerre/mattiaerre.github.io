@@ -9,7 +9,7 @@ exports[`to match snapshot 1`] = `
       mattiaerre.github.io
     </h1>
     <p>
-      Product Engineering at OpenTable
+      Product Engineering at GitHub
     </p>
     <p>
       <textarea
@@ -18,7 +18,7 @@ exports[`to match snapshot 1`] = `
       />
     </p>
     <footer>
-      2.3.0
+      2.4.0
     </footer>
   </main>
 </div>
