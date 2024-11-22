@@ -5,11 +5,13 @@
 ## How to
 
 ```bash
-yarn start
+nvm use
 
-yarn test
+npm start
 
-yarn deploy
+npm test
+
+npm run deploy
 ```
 
 ## Resources
