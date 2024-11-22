@@ -1,11 +1,15 @@
-import { version } from '../package.json';
 import './App.css';
+
+const version = '2.5.0';
 
 function App() {
   return (
     <main className="App">
       <h1>mattiaerre.github.io</h1>
-      <p>Product Engineering at GitHub</p>
+      <p>
+        Engineering Leadership, Meditation, Running, and Yoga (in alphabetical
+        order)
+      </p>
       <p>
         <textarea cols="85" rows="20"></textarea>
       </p>
